@@ -84,6 +84,10 @@ const App2 = () => {
         'massachusetts': 'MA',
     }
 
+    const stateCheck = (input) => {
+        return states[input.toLowerCase()] ? states[input.toLowerCase()] : input.toUpperCase()
+    }
+
     return (
         <div className="App">
             <div
@@ -144,17 +148,17 @@ const App2 = () => {
                             if (parsedData.Address && parsedData.Address) {
                                 last = spaceCheck(parsedData['Client Name'].split(',')[0]);
                                 first = spaceCheck(parsedData['Client Name'].split(', ')[1]);
-                                let len = parsedData.Address.split(', ').length
+                                let len = parsedData.Address.split(', ').length;
                                 if (parsedData.Address.split(', ').length === 5) {
                                     firstAddressLine = parsedData.Address.split(', ')[0] ? spaceCheck(parsedData.Address.split(', ')[0]) : 'MISSING ADDRESS LINE';
                                     secondAddressLine = parsedData.Address.split(', ')[1] ? spaceCheck(parsedData.Address.split(', ')[1]) : 'CHECKER';
-                                    city = parsedData.Address.split(', ')[len - 3] ? states[spaceCheck(parsedData.Address.split(', ')[len - 3]).toLowerCase()] : 'MISSING CITY';
-                                    state = parsedData.Address.split(', ')[len - 2] ? spaceCheck(parsedData.Address.split(', ')[len - 2]) : 'MISSING STATE';
+                                    city = parsedData.Address.split(', ')[len - 3] ? spaceCheck(parsedData.Address.split(', ')[len - 3]) : 'MISSING CITY';
+                                    state = parsedData.Address.split(', ')[len - 2] ? stateCheck(spaceCheck(parsedData.Address.split(', ')[len - 2])) : 'MISSING STATE';
                                     zipCode = parsedData.Address.split(', ')[len - 1] ? spaceCheck(parsedData.Address.split(', ')[len - 1]) : 'MISSING ZIPCODE';
                                 } else {
                                     firstAddressLine = parsedData.Address.split(', ')[0] ? spaceCheck(parsedData.Address.split(', ')[0]) : 'MISSING ADDRESS LINE';
-                                    city = parsedData.Address.split(', ')[len - 3] ? states[spaceCheck(parsedData.Address.split(', ')[len - 3]).toLowerCase()] : 'MISSING CITY';
-                                    state = parsedData.Address.split(', ')[len - 2] ? spaceCheck(parsedData.Address.split(', ')[len - 2]) : 'MISSING STATE';
+                                    city = parsedData.Address.split(', ')[len - 3] ? spaceCheck(parsedData.Address.split(', ')[len - 3]) : 'MISSING CITY';
+                                    state = parsedData.Address.split(', ')[len - 2] ? stateCheck(spaceCheck(parsedData.Address.split(', ')[len - 2])) : 'MISSING STATE';
                                     zipCode = parsedData.Address.split(', ')[len - 1] ? spaceCheck(parsedData.Address.split(', ')[len - 1]) : 'MISSING ZIPCODE';
                                 }
                                 // create code that identifies what to split by whether its / or - or whatever
