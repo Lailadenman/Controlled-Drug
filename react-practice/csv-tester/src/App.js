@@ -107,7 +107,7 @@ const App2 = () => {
                     let pName = parsedData['Patient Name'] ? spaceCheck(parsedData['Patient Name']) : 'MISSING PET NAME';
                     let instructions = parsedData['Medication Instructions'];
                     let medQty = parsedData['Dispensed'].slice(1, parsedData['Dispensed'].indexOf('.'))
-                    return <li key={index}>{pName} {last} - Qty: {medQty} Instructions:{instructions}</li>
+                    return <li key={index}>{pName} {last} - Qty: {medQty} / Instructions: {instructions}</li>
                 })
             }</ul>
             <table>
