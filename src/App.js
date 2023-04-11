@@ -196,7 +196,7 @@ const App2 = () => {
                             return <tr className='patientData' key={index}>
                                 <td>
                                     <p>PAT*******{last}*{first}****{firstAddressLine}*{secondAddressLine}*{city}*{state}*{zipCode}**{bYear}{bMonth}{bDay}*{pSex}*02***{pName}*~</p>
-                                    <p>DSP*00*{medNum}*{medYear}{medMonth}{medDay}*0*{medYear}{medMonth}{medDay}*0*01*{productId}*{medQty}*<strong>Days' supply</strong>*{unit}*01*02***01****~PRE**{deaReg}******~</p>
+                                    <p>DSP*00*{medNum}*{medYear}{medMonth}{medDay}*0*{medYear}{medMonth}{medDay}*0*01*{productId.split('-').join('')}*{medQty}*<strong>Days' supply</strong>*{unit}*01*02***01****~PRE**{deaReg}******~</p>
                                 </td>
                             </tr>
                         })}
