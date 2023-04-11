@@ -184,7 +184,7 @@ const App2 = () => {
                                 medMonth = parsedData['Medication Timestamp'].split(' ')[0].split('-')[0] ? parsedData['Medication Timestamp'].split(' ')[0].split('-')[0] : 'MISSING MED DATE (MONTH)';
                                 medDay = parsedData['Medication Timestamp'].split(' ')[0].split('-')[1] ? parsedData['Medication Timestamp'].split(' ')[0].split('-')[1] : 'MISSING MED DATE (DAY)';
                                 productId = parsedData['Product Identifier'] ? parsedData['Product Identifier'] : 'MISSING PRODUCT ID';
-                                medQty = parsedData['Dispensed'].slice(1) ? parsedData['Dispensed'].slice(1, parsedData['Dispensed'].indexOf('.')) : 'MISSING QTY';
+                                medQty = parsedData['Dispensed'].slice(1) ? parsedData['Dispensed'].slice(1, parsedData['Dispensed'].indexOf('.') + 1) : 'MISSING QTY';
                                 deaReg = parsedData['DEA Reg No.'] ? parsedData['DEA Reg No.'] : 'MISSING DEA NUM';
                             }
 
