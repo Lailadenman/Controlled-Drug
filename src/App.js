@@ -119,7 +119,7 @@ const App2 = () => {
                     <tr>
                         {/* <th>Header</th> */}
                         {/* Make sure to change 'T' to 'P' when done testing */}
-                        <th>TH*4.1*Transaction#***{currYear}{currMonStr}{currDayStr}*{currHour}{currMin}{currSec}*T**~~IS*8187849977*Sherman Oaks Veterinary Group**~PHA***AR1166520*Dr. Weston Richter******8187849977*7401**~</th>
+                        <th>TH*4.1*Transaction#***{currYear}{currMonStr}{currDayStr}*{currHour}{currMin}{currSec}*T**~~IS*8187849977*Sherman Oaks Veterinary Group**~PHA***AR1166520*Dr. Weston Richter******8187849977*PV0215118**~</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -184,7 +184,7 @@ const App2 = () => {
                                 medMonth = parsedData['Medication Timestamp'].split(' ')[0].split('-')[0] ? parsedData['Medication Timestamp'].split(' ')[0].split('-')[0] : 'MISSING MED DATE (MONTH)';
                                 medDay = parsedData['Medication Timestamp'].split(' ')[0].split('-')[1] ? parsedData['Medication Timestamp'].split(' ')[0].split('-')[1] : 'MISSING MED DATE (DAY)';
                                 productId = parsedData['Product Identifier'] ? parsedData['Product Identifier'] : 'MISSING PRODUCT ID';
-                                medQty = parsedData['Dispensed'].slice(1) ? parsedData['Dispensed'].slice(1, parsedData['Dispensed'].indexOf('.') + 1) : 'MISSING QTY';
+                                medQty = parsedData['Dispensed'].slice(1) ? parsedData['Dispensed'].slice(1, (parsedData['Dispensed'].indexOf('.') + 1)) : 'MISSING QTY';
                                 deaReg = parsedData['DEA Reg No.'] ? parsedData['DEA Reg No.'] : 'MISSING DEA NUM';
                             }
 
