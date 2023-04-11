@@ -110,7 +110,13 @@ const App2 = () => {
                     let last = parsedData['Client Name'].split(',')[0];
                     let pName = parsedData['Patient Name'] ? spaceCheck(parsedData['Patient Name']) : 'MISSING PET NAME';
                     let instructions = parsedData['Medication Instructions'];
-                    let medQty = parsedData['Dispensed'].slice(1, parsedData['Dispensed'].indexOf('.'))
+                    let endInd;
+                    if (parsedData['Dispensed'].includes('.')) {
+                        endInd = parsedData['Dispensed'].indexOf('.');
+                    } else {
+                        endInd = parsedData['Dispensed'].length;
+                    }
+                    let medQty = parsedData['Dispensed'].slice(1) ? parsedData['Dispensed'].slice(1, endInd) : 'MISSING QTY';
                     return <li key={index}>{pName} {last} - Qty: {medQty} / Instructions: {instructions}</li>
                 })
             }</ul>
@@ -184,7 +190,13 @@ const App2 = () => {
                                 medMonth = parsedData['Medication Timestamp'].split(' ')[0].split('-')[0] ? parsedData['Medication Timestamp'].split(' ')[0].split('-')[0] : 'MISSING MED DATE (MONTH)';
                                 medDay = parsedData['Medication Timestamp'].split(' ')[0].split('-')[1] ? parsedData['Medication Timestamp'].split(' ')[0].split('-')[1] : 'MISSING MED DATE (DAY)';
                                 productId = parsedData['Product Identifier'] ? parsedData['Product Identifier'] : 'MISSING PRODUCT ID';
-                                medQty = parsedData['Dispensed'].slice(1) ? parsedData['Dispensed'].slice(1, (parsedData['Dispensed'].indexOf('.') + 1)) : 'MISSING QTY';
+                                let endInd;
+                                if (parsedData['Dispensed'].includes('.')) {
+                                    endInd = parsedData['Dispensed'].indexOf('.');
+                                } else {
+                                    endInd = parsedData['Dispensed'].length;
+                                }
+                                medQty = parsedData['Dispensed'].slice(1) ? parsedData['Dispensed'].slice(1, endInd) : 'MISSING QTY';
                                 deaReg = parsedData['DEA Reg No.'] ? parsedData['DEA Reg No.'] : 'MISSING DEA NUM';
                             }
 
@@ -201,7 +213,7 @@ const App2 = () => {
                             </tr>
                         })}
                     <tr>
-                        <td>TP*{tildes - 3}*~TT*Transaction#(must match TH02)*{tildes}*~</td>
+                        <td>TP*{tildes - 3}*~TT*<strong>Transaction#(must match TH02)</strong>*{tildes}*~</td>
                     </tr>
                 </tbody>
             </table>
