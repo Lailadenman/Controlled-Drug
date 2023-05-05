@@ -54,7 +54,7 @@ const App2 = () => {
     const currSec = date.getSeconds().toString().padStart(2, '0');
 
     const filteredCsvData = parsedCsvData.filter((ele) => ele.Address !== undefined);
-    const tildes = (filteredCsvData.length * 3) + 6;
+    const tildes = (filteredCsvData.length * 4) + 6;
 
     const spaceCheck = (input) => {
         let newInput = input;
@@ -91,6 +91,15 @@ const App2 = () => {
         'FC8507646': 'Dr. Mathew Cohen',
         'FM8466749': 'Dr. Jon Mendoza',
         'FG0133417': 'Dr. Matthew Goss'
+    }
+
+    const licenseNums = {
+        'AR1166520': '7401',
+        'FR8512748': '21142',
+        'FL118890': '22593',
+        'FC8507646': '23469',
+        'FM8466749': '23442',
+        'FG0133417': '22990'
     }
 
     const stateCheck = (input) => {
@@ -211,14 +220,14 @@ const App2 = () => {
 
                             let unit = '01';
 
-                            if (parsedData['Product Identifier'] === 60432 - 455 - 16) unit = '02';
+                            if (parsedData['Product Identifier'] === '60432-455-16') unit = '02';
                             // console.log(parsedData && parsedData['Client Name']);
                             // console.log(parsedData && parsedData['Client Name'].split(',')[0]);
                             return <tr className='patientData' key={index}>
                                 <td>
-                                    <p>PHA***{deaReg}*{regNums[deaReg]}******8187849977***~</p>
+                                    <p>PHA***{deaReg}*{regNums[deaReg]}******8187849977*{licenseNums[deaReg]}**~</p>
                                     <p>PAT*******{last}*{first}****{firstAddressLine}*{secondAddressLine}*{city}*{state}*{zipCode}**{bYear}{bMonth}{bDay}*{pSex}*02***{pName}*~</p>
-                                    <p>DSP*00*{medNum}*{medYear}{medMonth}{medDay}*0*{medYear}{medMonth}{medDay}*0*01*{productId.split('-').join('')}*{medQty}*<strong>Days' supply</strong>*{unit}*01*02***01****~PRE**{deaReg}******~</p>
+                                    <p>DSP*00*{medNum}*{medYear}{medMonth}{medDay}*0*{medYear}{medMonth}{medDay}*0*01*{productId.split('-').join('')}*{medQty}*<strong>DAYSUPPLY</strong>*{unit}*01*02***01****~PRE**{deaReg}******~</p>
                                 </td>
                             </tr>
                         })}
