@@ -5,7 +5,7 @@ import { useDropzone } from 'react-dropzone';
 // const allowedExtensions = ["csv"];
 
 
-const App2 = () => {
+const App = () => {
     const [parsedCsvData, setParsedCsvData] = useState([]);
     // const [ownerName, setOwnerName] = useState('');
 
