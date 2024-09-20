@@ -88,8 +88,6 @@ const App2 = () => {
         'AR1166520': 'Dr. Weston Richter',
         'FR8512748': 'Dr. Andrea Richter',
         'FL118890': 'Dr. Matthew Lockhart',
-        'FC8507646': 'Dr. Mathew Cohen',
-        'FM8466749': 'Dr. Jon Mendoza',
         'FG0133417': 'Dr. Matthew Goss',
     }
 
@@ -215,7 +213,7 @@ const App2 = () => {
                                     endInd = parsedData['Dispensed'].length;
                                 }
                                 medQty = parsedData['Dispensed'].slice(1) ? parsedData['Dispensed'].slice(1, endInd) : 'MISSING QTY';
-                                deaReg = parsedData['DEA Reg No.'] ? parsedData['DEA Reg No.'] : 'MISSING DEA NUM';
+                                deaReg = parsedData['DEA Reg No.'] ? parsedData['DEA Reg No.'] : parsedData['Prescriber DEA Number'] ? parsedData['Prescriber DEA Number'] :'MISSING DEA NUM';
                             }
 
                             let unit = '01';
@@ -225,10 +223,10 @@ const App2 = () => {
                             // console.log(parsedData && parsedData['Client Name'].split(',')[0]);
                             return <tr className='patientData' key={index}>
                                 <td>
-                                    {/* <p>TH*4.1*Transaction#***{currYear}{currMonStr}{currDayStr}*{currHour}{currMin}{currSec}*P**~~IS*8187849977*Sherman Oaks Veterinary Group**~</p> */}
-                                    <p>PHA***{deaReg}*{regNums[deaReg]}******8187849977*{licenseNums[deaReg]}**~</p>
+                                    {/* <p>TH*4.2B*Transaction#***{currYear}{currMonStr}{currDayStr}*{currHour}{currMin}{currSec}*P**~~IS*8187849977*Sherman Oaks Veterinary Group**~</p> */}
+                                    <p>PHA***{deaReg}*{regNums[deaReg]}******8187849977*{licenseNums[deaReg]}***~</p>
                                     <p>PAT*******{last}*{first}****{firstAddressLine}*{secondAddressLine}*{city}*{state}*{zipCode}**{bYear}{bMonth}{bDay}*{pSex}*02***{pName}*~</p>
-                                    <p>DSP*00*{medNum}*{medYear}{medMonth}{medDay}*0*{medYear}{medMonth}{medDay}*0*01*{productId.split('-').join('')}*{medQty}*<strong>DAYSUPPLY</strong>*{unit}*01*02***01****~PRE**{deaReg}******~</p>
+                                    <p>DSP*00*{medNum}*{medYear}{medMonth}{medDay}*0*{medYear}{medMonth}{medDay}*0*01*{productId.split('-').join('')}*{medQty}*<strong>DAYSUPPLY</strong>*{unit}*01*00***01*{medYear}{medMonth}{medDay}********~PRE**{deaReg}********~</p>
                                     {/* <p>TP*6*~TT*<strong>Transaction#(must match TH02)</strong>*9*~</p> */}
                                 </td>
                             </tr>
